@@ -1,0 +1,12 @@
+services:
+  ais-collision-detection:
+    build: .
+    image: ais-collision-detection:v1.0
+    volumes:
+      - ./data:/data
+      - ./output:/app/output
+    environment:
+      - DATA_DIR=/data
+      - OUTPUT_DIR=/app/output
+    mem_limit: 12g
+    cpus: "4"

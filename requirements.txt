@@ -1,0 +1,5 @@
+pyspark==4.0.2
+h3==4.5.0
+folium==0.20.0
+pandas==2.2.3
+numpy==2.0.2
