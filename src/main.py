@@ -187,7 +187,7 @@ df = df.filter(
 
 # ------------- GPS jump filter, implied speed between consecutive positions -------------
 # purpose: catches coordinate teleportation that SOG field alone won't catch
-# per Zhang et al. (2023): AIS errors occur during collection, transmission, reception
+# per Liu et al. (2023): AIS errors occur during collection, transmission, reception
 
 speed_window = Window.partitionBy("MMSI").orderBy("Timestamp")
 
@@ -278,7 +278,7 @@ def get_h3_neighbors(lat, lon):
 
 # ------------- Time bucketing -------------
 # Purpose: bins pings into 1-minute windows -> AIS Class A transmits every 2-10s
-# so multiple pings fall in each bucket per Zhang et al. (2023)
+# so multiple pings fall in each bucket per Liu et al. (2023)
 
 df_filtered = df_filtered.withColumn(
     "TimeBucket",
@@ -342,7 +342,7 @@ candidates = candidates.withColumn("vessel_distance_nm",
 
 # ------------- DCPA/TCPA calculation -------------
 # Distance and Time at Closest Point of Approach
-# per Zhang et al. (2023) -> more predictive than instantaneous distance
+# per Liu et al. (2023) -> more predictive than instantaneous distance
 # Positive TCPA = vessels still approaching
 # Negative TCPA = vessels already past closest point
 # DCPA small + TCPA positive = genuine collision risk
