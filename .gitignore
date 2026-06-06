@@ -1,5 +1,7 @@
-data/
-output/
+data/*
+!data/.gitkeep
+output/*
+!output/.gitkeep
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
